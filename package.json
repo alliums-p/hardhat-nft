@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@chainlink/contracts": "^0.3.1",
+    "@chainlink/contracts": "^0.4.2",
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@^0.3.0-beta.13",
     "@nomiclabs/hardhat-etherscan": "^3.0.0",
     "@nomiclabs/hardhat-waffle": "^2.0.2",
@@ -24,6 +24,9 @@
   },
   "devDependencies": {
     "@openzeppelin/contracts": "^4.7.3",
+    "@pinata/sdk": "^1.1.26",
+    "path": "^0.12.7",
+    "pinata-sdk": "^0.1.7",
     "solhint": "^3.3.7"
   },
   "scripts": {

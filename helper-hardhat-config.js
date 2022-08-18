@@ -1,25 +1,31 @@
 const networkConfig = {
+    31337: {
+        name: "localhost",
+        ethUsdPriceFeed: "0x9326BFA02ADD2366b30bacB125260Af641031331",
+        gasLane:
+            "0xd89b2bf150e3b9e13446986e571fb9cab24b13cea0a43ea20a6049a85cc807cc", // 30 gwei
+        mintFee: "10000000000000000", // 0.01 ETH
+        callbackGasLimit: "500000" // 500,000 gas
+    },
     4: {
         name: "rinkeby",
-        ethUsdPriceFeed: "0x8A753747A1Fa494EC906cE90E9f37563A8AF630e", 
-    },
-    1: {
-        name: "ethereum",
-        ethUsdPriceFeed: "0xaEA2808407B7319A31A383B6F8B60f04BCa23cE2"
-    },
-    137: {
-        name: "polygon",
-        ethUsdPriceFeed: "0xF9680D99D6C9589e2a93a78A04A279e509205945"
-    },
+        ethUsdPriceFeed: "0x8A753747A1Fa494EC906cE90E9f37563A8AF630e",
+        vrfCoordinatorV2: "0x6168499c0cFfCaCD319c818142124B7A15E857ab",
+        gasLane:
+            "0xd89b2bf150e3b9e13446986e571fb9cab24b13cea0a43ea20a6049a85cc807cc",
+        callbackGasLimit: "500000", // 500,000 gas
+        mintFee: "10000000000000000", // 0.01 ETH
+        subscriptionId: "8386" // add your ID here!
+    }
 }
 
-const developmentChains = ["hardhat", "localhost"];
-const DECIMALS = 8;
-const INITIAL_ANSWER = 1100 * 10**8;
+const developmentChains = ["hardhat", "localhost"]
+const DECIMALS = "18"
+const INITIAL_PRICE = "200000000000000000000"
 
 module.exports = {
     networkConfig,
     developmentChains,
     DECIMALS,
-    INITIAL_ANSWER
+    INITIAL_PRICE
 }
