@@ -2,7 +2,7 @@ const { assert } = require("chai")
 const { getNamedAccounts, ethers, deployments } = require("hardhat")
 const { developmentChains } = require("../../helper-hardhat-config")
 
-!developmentChains.inclides(network.name)
+!developmentChains.includes(network.name)
     ? describe.skip
     : describe("BasicNFT Unit Tests", async function() {
           let nft, deployer

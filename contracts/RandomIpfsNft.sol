@@ -4,7 +4,6 @@ pragma solidity 0.8.9;
 
 import "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol";
 import "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol";
-
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
@@ -53,7 +52,7 @@ contract RandomIpfsNft is VRFConsumerBaseV2, ERC721URIStorage, Ownable{
     constructor(
         address vrfCoordinator,
         uint64 subscriptionId,
-        bytes32 gasLane,
+        bytes32 gasLane, // keyHash
         uint32 callbackGasLimit,
         string[3] memory dogTokenUris,
         uint256 mintFee
@@ -77,6 +76,7 @@ contract RandomIpfsNft is VRFConsumerBaseV2, ERC721URIStorage, Ownable{
             i_callbackGasLimit, 
             NUM_WORDS
         );
+
         s_requestIdToSender[requestId] = msg.sender;
 
         emit NFTRequested(requestId, msg.sender);

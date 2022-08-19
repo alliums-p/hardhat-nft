@@ -32,7 +32,7 @@ module.exports = async function({ getNamedAccounts, deployments }) {
         "ipfs://QmX8ff9EZAqmQnSob3b4EWyNLXfazqJQJyY4SJkrc8HXXf"
     ]
 
-    const FUND_AMOUNT = ethers.utils.parseEther("0.1")
+    const FUND_AMOUNT = ethers.utils.parseEther("20")
 
     // Get IPFS hashes of out images
     if (process.env.UPLOAD_TO_PINATA == "true") {
@@ -40,12 +40,10 @@ module.exports = async function({ getNamedAccounts, deployments }) {
         tokenUris = await handleTokenUris()
     }
 
-    let vrfCoordinatorV2Address, subscriptionId
+    let vrfCoordinatorV2Address, subscriptionId, vrfCoordinatorV2Mock
 
     if (developmentChains.includes(network.name)) {
-        const vrfCoordinatorV2Mock = await ethers.getContract(
-            "VRFCoordinatorV2Mock"
-        )
+        vrfCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock")
         vrfCoordinatorV2Address = vrfCoordinatorV2Mock.address
         const tx = await vrfCoordinatorV2Mock.createSubscription()
         const txReceipt = await tx.wait(1)
@@ -73,6 +71,12 @@ module.exports = async function({ getNamedAccounts, deployments }) {
         log: true,
         waitConfirmations: network.config.blockConfirmations || 1
     })
+
+    // await vrfCoordinatorV2Mock.addConsumer(
+    //     subscriptionId,
+    //     randomIpfsNft.address
+    // )
+
     log("==================================")
     if (
         !developmentChains.includes(network.name) &&
