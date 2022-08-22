@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.7;
+pragma solidity 0.8.9;
 
 contract encoding {
     function combineString() public pure returns (string memory) {
@@ -34,7 +34,7 @@ contract encoding {
     function multiEncode() public pure returns (bytes memory) {
         return abi.encode("some string", "it's bigger!");
     }
-    
+
     function multiDecode() public pure returns (string memory, string memory) {
         (string memory someString, string memory otherString) = abi.decode(multiEncode(), (string, string));
         return (someString, otherString);
